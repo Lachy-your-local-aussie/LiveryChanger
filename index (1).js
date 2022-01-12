@@ -51,57 +51,41 @@ if (document.getElementsByClassName("geofs-aircraft-list")[0].children[4].childE
 }
 
 // master livery function
-if (geofs.version == 2.9){
-geofs.aircraft.Aircraft.prototype.change = function(a, b, c, d) {
-    var e = this;
-    a = a || this.aircraftRecord.id;
-    c = this.load(a, this.getCurrentCoordinates(), c, d);
-    c.then(function() {
-        e.loadLivery(b);
-    });
-    geofs.api.analytics.event("aircraft", geofs.aircraftList[a].name);
 
-  if (geofs.aircraft.instance.id == 4 && geofs.aircraft.instance.liveryId == 8){
+if (geofs.version == 2.9){
+  function updateLivery(){
+      if (parseInt(geofs.aircraft.instance.id) == 4 && parseInt(geofs.aircraft.instance.liveryId) == 7){
 geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__2_.jpg", 3, geofs.aircraft.instance.definition.parts[0]["3dmodel"]);
   }
-    if (geofs.aircraft.instance.id == 4 && geofs.aircraft.instance.liveryId == 7){
+    if (parseInt(geofs.aircraft.instance.id) == 4 && parseInt(geofs.aircraft.instance.liveryId) == 8){
 geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_4.png", 3, geofs.aircraft.instance.definition.parts[0]["3dmodel"]);
       }
-  if (geofs.aircraft.instance.id == 4 && geofs.aircraft.instance.liveryId == 10){
+  if (parseInt(geofs.aircraft.instance.id) == 4 && parseInt(geofs.aircraft.instance.liveryId) == 9){
 geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__6_.png", 3, geofs.aircraft.instance.definition.parts[0]["3dmodel"]);
   }
       
-    if (geofs.aircraft.instance.id == 4 && geofs.aircraft.instance.liveryId == 9){
+    if (parseInt(geofs.aircraft.instance.id) == 4 && parseInt(geofs.aircraft.instance.liveryId)
+ == 10){
 geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0.png", 3, geofs.aircraft.instance.definition.parts[0]["3dmodel"]);
-        return c;
 }
-};
+  }
 }
-else{
-  geofs.aircraft.Aircraft.prototype.change = function(a, b, c, d) {
-    var e = this;
-    a = a || this.aircraftRecord.id;
-    c = this.load(a, this.getCurrentCoordinates(), c, d);
-    c.then(function() {
-        e.loadLivery(b);
-    });
-    geofs.api.analytics.event("aircraft", geofs.aircraftList[a].name);
-
-  if (geofs.aircraft.instance.id == 4 && geofs.aircraft.instance.liveryId == 8){
+if (geofs.version == 3){
+  function updateLivery(){
+      if (parseInt(geofs.aircraft.instance.id) == 4 && parseInt(geofs.aircraft.instance.liveryId) == 7){
 geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model, "https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__2_.jpg", 3);
   }
-    if (geofs.aircraft.instance.id == 4 && geofs.aircraft.instance.liveryId == 7){
+    if (parseInt(geofs.aircraft.instance.id) == 4 && parseInt(geofs.aircraft.instance.liveryId) == 8){
 geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model, "https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_4.png", 3);
       }
-  if (geofs.aircraft.instance.id == 4 && geofs.aircraft.instance.liveryId == 10){
+  if (parseInt(geofs.aircraft.instance.id) == 4 && parseInt(geofs.aircraft.instance.liveryId) == 9){
 geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model, "https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__6_.png", 3);
   }
       
-    if (geofs.aircraft.instance.id == 4 && geofs.aircraft.instance.liveryId == 9){
+    if (parseInt(geofs.aircraft.instance.id) == 4 && parseInt(geofs.aircraft.instance.liveryId) == 10){
 geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model, "https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0.png", 3);
-        return c;
-}
-};
+    }
+  }
 }
 
 let arr1 = [];
@@ -131,10 +115,11 @@ function updateMultiplayer(){
 }
 
 setInterval(function(){
-  updateMultiplayer()
-}, 5000)
+  updateLivery();
+  updateMultiplayer();
+}, 5100)
 
 //Bookmark code
 /*
-javascript: (() => {newDiv=document.createElement("div"),newDiv.setAttribute("data-aircraft",4),newDiv.setAttribute("data-livery",7),newDiv.innerHTML='<img src="https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/screenshot_2022-01-10_8.15.06_am__1_.png">RyanAir',newDiv1=document.createElement("div"),newDiv1.setAttribute("data-aircraft",4),newDiv1.setAttribute("data-livery",8),newDiv1.innerHTML='<img src="https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/screenshot_2022-01-10_11.52.42_am__1_.png">Delta',newDiv2=document.createElement("div"),newDiv2.setAttribute("data-aircraft",4),newDiv2.setAttribute("data-livery",9),newDiv2.innerHTML='<img src="https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/6473892164984.png">Air Canada',newDiv3=document.createElement("div"),newDiv3.setAttribute("data-aircraft",4),newDiv3.setAttribute("data-livery",10),newDiv3.innerHTML='<img src="https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/8437210984781.png">Bare Metal',7==document.getElementsByClassName("geofs-aircraft-list")[0].children[5].childElementCount&&(document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv),document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv1),document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv2),document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv3)),7==document.getElementsByClassName("geofs-aircraft-list")[0].children[4].childElementCount&&(document.getElementsByClassName("geofs-aircraft-list")[0].children[4].appendChild(newDiv),document.getElementsByClassName("geofs-aircraft-list")[0].children[4].appendChild(newDiv1),document.getElementsByClassName("geofs-aircraft-list")[0].children[4].appendChild(newDiv2),document.getElementsByClassName("geofs-aircraft-list")[0].children[4].appendChild(newDiv3)),2.9==geofs.version?geofs.aircraft.Aircraft.prototype.change=function(e,t,i,r){var a=this;if(e=e||this.aircraftRecord.id,(i=this.load(e,this.getCurrentCoordinates(),i,r)).then(function(){a.loadLivery(t)}),geofs.api.analytics.event("aircraft",geofs.aircraftList[e].name),4==geofs.aircraft.instance.id&&8==geofs.aircraft.instance.liveryId&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__2_.jpg",3,geofs.aircraft.instance.definition.parts[0]["3dmodel"]),4==geofs.aircraft.instance.id&&7==geofs.aircraft.instance.liveryId&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_4.png",3,geofs.aircraft.instance.definition.parts[0]["3dmodel"]),4==geofs.aircraft.instance.id&&10==geofs.aircraft.instance.liveryId&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__6_.png",3,geofs.aircraft.instance.definition.parts[0]["3dmodel"]),4==geofs.aircraft.instance.id&&9==geofs.aircraft.instance.liveryId)return geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0.png",3,geofs.aircraft.instance.definition.parts[0]["3dmodel"]),i}:geofs.aircraft.Aircraft.prototype.change=function(e,t,i,r){var a=this;if(e=e||this.aircraftRecord.id,(i=this.load(e,this.getCurrentCoordinates(),i,r)).then(function(){a.loadLivery(t)}),geofs.api.analytics.event("aircraft",geofs.aircraftList[e].name),4==geofs.aircraft.instance.id&&8==geofs.aircraft.instance.liveryId&&geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model,"https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__2_.jpg",3),4==geofs.aircraft.instance.id&&7==geofs.aircraft.instance.liveryId&&geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model,"https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_4.png",3),4==geofs.aircraft.instance.id&&10==geofs.aircraft.instance.liveryId&&geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model,"https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__6_.png",3),4==geofs.aircraft.instance.id&&9==geofs.aircraft.instance.liveryId)return geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model,"https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0.png",3),i};let arr1=[];function convertUsers(){arr1=$.map(multiplayer.visibleUsers,function(e){return e})}function updateMultiplayer(){arr1=[],convertUsers(),arr1.forEach(function(e,t){7==e.currentLivery&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__2_low.png",0,multiplayer.visibleUsers[e.id].model),8==e.currentLivery&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_4_low.png",0,multiplayer.visibleUsers[e.id].model),9==e.currentLivery&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__5__low.png",0,multiplayer.visibleUsers[e.id].model),10==e.currentLivery&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0low.png",0,multiplayer.visibleUsers[e.id].model)})}setInterval(function(){updateMultiplayer()},5e3);})();
+javascript: (() => {if(newDiv=document.createElement("div"),newDiv.setAttribute("data-aircraft",4),newDiv.setAttribute("data-livery",7),newDiv.innerHTML='<img src="https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/screenshot_2022-01-10_8.15.06_am__1_.png">RyanAir',newDiv1=document.createElement("div"),newDiv1.setAttribute("data-aircraft",4),newDiv1.setAttribute("data-livery",8),newDiv1.innerHTML='<img src="https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/screenshot_2022-01-10_11.52.42_am__1_.png">Delta',newDiv2=document.createElement("div"),newDiv2.setAttribute("data-aircraft",4),newDiv2.setAttribute("data-livery",9),newDiv2.innerHTML='<img src="https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/6473892164984.png">Air Canada',newDiv3=document.createElement("div"),newDiv3.setAttribute("data-aircraft",4),newDiv3.setAttribute("data-livery",10),newDiv3.innerHTML='<img src="https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/8437210984781.png">Bare Metal',7==document.getElementsByClassName("geofs-aircraft-list")[0].children[5].childElementCount&&(document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv),document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv1),document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv2),document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv3)),7==document.getElementsByClassName("geofs-aircraft-list")[0].children[4].childElementCount&&(document.getElementsByClassName("geofs-aircraft-list")[0].children[4].appendChild(newDiv),document.getElementsByClassName("geofs-aircraft-list")[0].children[4].appendChild(newDiv1),document.getElementsByClassName("geofs-aircraft-list")[0].children[4].appendChild(newDiv2),document.getElementsByClassName("geofs-aircraft-list")[0].children[4].appendChild(newDiv3)),2.9==geofs.version)function updateLivery(){4==parseInt(geofs.aircraft.instance.id)&&7==parseInt(geofs.aircraft.instance.liveryId)&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__2_.jpg",3,geofs.aircraft.instance.definition.parts[0]["3dmodel"]),4==parseInt(geofs.aircraft.instance.id)&&8==parseInt(geofs.aircraft.instance.liveryId)&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_4.png",3,geofs.aircraft.instance.definition.parts[0]["3dmodel"]),4==parseInt(geofs.aircraft.instance.id)&&9==parseInt(geofs.aircraft.instance.liveryId)&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__6_.png",3,geofs.aircraft.instance.definition.parts[0]["3dmodel"]),4==parseInt(geofs.aircraft.instance.id)&&10==parseInt(geofs.aircraft.instance.liveryId)&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0.png",3,geofs.aircraft.instance.definition.parts[0]["3dmodel"])}if(3==geofs.version)function updateLivery(){4==parseInt(geofs.aircraft.instance.id)&&7==parseInt(geofs.aircraft.instance.liveryId)&&geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model,"https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__2_.jpg",3),4==parseInt(geofs.aircraft.instance.id)&&8==parseInt(geofs.aircraft.instance.liveryId)&&geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model,"https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_4.png",3),4==parseInt(geofs.aircraft.instance.id)&&9==parseInt(geofs.aircraft.instance.liveryId)&&geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model,"https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__6_.png",3),4==parseInt(geofs.aircraft.instance.id)&&10==parseInt(geofs.aircraft.instance.liveryId)&&geofs.api.changeModelTexture(geofs.aircraft.instance.definition.parts[0]["3dmodel"]._model,"https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0.png",3)}let arr1=[];function convertUsers(){arr1=$.map(multiplayer.visibleUsers,function(e){return e})}function updateMultiplayer(){arr1=[],convertUsers(),arr1.forEach(function(e,t){7==e.currentLivery&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__2_low.png",0,multiplayer.visibleUsers[e.id].model),8==e.currentLivery&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_4_low.png",0,multiplayer.visibleUsers[e.id].model),9==e.currentLivery&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__5__low.png",0,multiplayer.visibleUsers[e.id].model),10==e.currentLivery&&geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0low.png",0,multiplayer.visibleUsers[e.id].model)})}setInterval(function(){updateLivery(),updateMultiplayer()},5100);})();
 */
