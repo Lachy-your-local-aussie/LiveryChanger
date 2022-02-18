@@ -59,6 +59,22 @@ newDiv6.setAttribute("data-livery", 13);
 
 newDiv6.innerHTML = 'United';
 
+//748F Lufthansa
+newDiv7 = document.createElement("div");
+
+newDiv7.setAttribute("data-aircraft", 252);
+newDiv7.setAttribute("data-livery", 14);
+
+newDiv7.innerHTML = 'Lufthansa';
+
+//A10 Bare
+newDiv8 = document.createElement("div");
+
+newDiv8.setAttribute("data-aircraft", 2310);
+newDiv8.setAttribute("data-livery", 15);
+
+newDiv8.innerHTML = 'Solid Gray';
+
 if (document.getElementsByClassName("geofs-aircraft-list")[0].children[5].childElementCount == 7){
   document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv);
   document.getElementsByClassName("geofs-aircraft-list")[0].children[5].appendChild(newDiv1);
@@ -83,10 +99,19 @@ document.getElementsByClassName("geofs-aircraft-list")[0].children[11].appendChi
 
 document.getElementsByClassName("geofs-list-collapsible-item geofs-notstudent-role")[0].children[0].children[50].appendChild(newDiv5)
 document.getElementsByClassName("geofs-list-collapsible-item geofs-notstudent-role")[0].children[0].children[6].appendChild(newDiv6)
+document.getElementsByClassName("geofs-list-collapsible-item geofs-notstudent-role")[0].children[0].children[9].appendChild(newDiv7)
+document.getElementsByClassName("geofs-list-collapsible-item geofs-notstudent-role")[0].children[0].children[14].appendChild(newDiv8)
 // master livery function
 
 if (geofs.version == 2.9){
   function updateLivery(){
+          if (parseInt(geofs.aircraft.instance.id) == 252 && parseInt(geofs.aircraft.instance.liveryId) == 14){
+geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/id163__1_.png", 0, geofs.aircraft.instance.definition.parts[1]["3dmodel"])
+geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/id163__1_.png", 0, geofs.aircraft.instance.definition.parts[0]["3dmodel"])
+  }
+              if (parseInt(geofs.aircraft.instance.id) == 2310 && parseInt(geofs.aircraft.instance.liveryId) == 15){
+geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/livercomposit.jpg", 1, geofs.aircraft.instance.definition.parts[0]["3dmodel"]);
+  }
       if (parseInt(geofs.aircraft.instance.id) == 4 && parseInt(geofs.aircraft.instance.liveryId) == 7){
 geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture_0__2_.jpg", 3, geofs.aircraft.instance.definition.parts[0]["3dmodel"]);
   }
@@ -217,4 +242,3 @@ setInterval(function(){
 setInterval(function(){
   updateMultiplayer();
 }, 10000)
-
