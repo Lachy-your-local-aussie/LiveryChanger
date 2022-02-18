@@ -15,6 +15,6 @@ Note: It is best to select the base aircraft, then when it loads in select the a
 A380: House Livery<br>
 A350K: Qatar Livery (Not MP Compatible yet)<br>
 A321Neo: United Livery (Not MP Compatible yet)<br>
-B748F: Lufthansa (Ik its a freighter but who cares)(Not MP Compatible yet.)<br>
-A-10C: Solid Gray<br>
+B748F: Lufthansa (Ik its a freighter but who cares)(Not MP Compatible yet.)(2.9 ONLY)<br>
+A-10C: Solid Gray (2.9 ONLY)<br>
 
