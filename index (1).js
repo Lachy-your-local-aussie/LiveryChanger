@@ -106,8 +106,13 @@ document.getElementsByClassName("geofs-list-collapsible-item geofs-notstudent-ro
 if (geofs.version == 2.9){
   function updateLivery(){
           if (parseInt(geofs.aircraft.instance.id) == 252 && parseInt(geofs.aircraft.instance.liveryId) == 14){
-geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/id163__1_.png", 0, geofs.aircraft.instance.definition.parts[1]["3dmodel"])
-geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/id163__1_.png", 0, geofs.aircraft.instance.definition.parts[0]["3dmodel"])
+
+Object.values(geofs.api.models._primitives).forEach(function(e){
+if (e._apiLla[0] - geofs.aircraft.instance.llaLocation[0] == 0){
+console.log(e);
+geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/id181__1_.png", 0, e)
+}})
+            
   }
               if (parseInt(geofs.aircraft.instance.id) == 2310 && parseInt(geofs.aircraft.instance.liveryId) == 15){
 geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/livercomposit.jpg", 1, geofs.aircraft.instance.definition.parts[0]["3dmodel"]);
@@ -242,3 +247,4 @@ setInterval(function(){
 setInterval(function(){
   updateMultiplayer();
 }, 10000)
+
