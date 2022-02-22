@@ -18,3 +18,6 @@ A321Neo: United Livery (Not MP Compatible yet)<br>
 B748F: Lufthansa (Ik its a freighter but who cares)(Not MP Compatible yet.)(2.9 ONLY)<br>
 A-10C: Solid Gray (2.9 ONLY)<br>
 
+
+**NOTE:**<br>
+If a livery is broken on an LRX aircraft, let me know as LRX actively tries to break this plugin. I will fix it within the day.
