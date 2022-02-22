@@ -141,10 +141,13 @@ geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.pr
 }
                 if (parseInt(geofs.aircraft.instance.id) == 242 && parseInt(geofs.aircraft.instance.liveryId)
  == 13){
-geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture__1___1_.png", 0, geofs.aircraft.instance.definition.parts[0]["3dmodel"]);
-                  geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/texture__1___1_.png", 0, geofs.aircraft.instance.definition.parts[1]["3dmodel"]);
+Object.values(geofs.api.models._primitives).forEach(function(e){
+  if (e._apiLla[0] - geofs.aircraft.instance.llaLocation[0] > -0.01 && e._apiLla[0] - geofs.aircraft.instance.llaLocation[0] < 0.01) {
+console.log(e);
+geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/id8__1_.png", 0, e)
+}})
 }
-  }
+}
 }
 if (geofs.version == 3){
   function updateLivery(){
