@@ -1,5 +1,18 @@
 let lastLivId = 0;
 let lastMpLId = 0;
+let a321id = null
+let b747id = null
+//find id of the 747 and a321 automatically
+document.querySelectorAll('[data-aircraft]').forEach(function(e){
+  if (e.innerText.includes("A321"))
+    a321id = e.attributes["data-aircraft"].value
+})
+
+document.querySelectorAll('[data-aircraft]').forEach(function(e){
+  if (e.innerText.includes("747"))
+    b747id = e.attributes["data-aircraft"].value
+})
+
 //737 ryanair livery
 newDiv = document.createElement("div");
 
@@ -54,7 +67,7 @@ newDiv5.innerHTML = 'Qatar';
 //A321Neo United
 newDiv6 = document.createElement("div");
 
-newDiv6.setAttribute("data-aircraft", 242);
+newDiv6.setAttribute("data-aircraft", a321id);
 newDiv6.setAttribute("data-livery", 13);
 
 newDiv6.innerHTML = 'United';
@@ -62,7 +75,7 @@ newDiv6.innerHTML = 'United';
 //748F Lufthansa
 newDiv7 = document.createElement("div");
 
-newDiv7.setAttribute("data-aircraft", 252);
+newDiv7.setAttribute("data-aircraft", b747id);
 newDiv7.setAttribute("data-livery", 14);
 
 newDiv7.innerHTML = 'Lufthansa';
@@ -98,14 +111,23 @@ document.getElementsByClassName("geofs-aircraft-list")[0].children[11].appendChi
   }
 
 document.getElementsByClassName("geofs-list-collapsible-item geofs-notstudent-role")[0].children[0].children[50].appendChild(newDiv5)
-document.getElementsByClassName("geofs-list-collapsible-item geofs-notstudent-role")[0].children[0].children[6].appendChild(newDiv6)
-document.getElementsByClassName("geofs-list-collapsible-item geofs-notstudent-role")[0].children[0].children[9].appendChild(newDiv7)
+
+document.querySelectorAll('[data-aircraft]').forEach(function(e){
+  if (e.innerText.includes("A321"))
+    e.appendChild(newDiv6)
+})
+
+document.querySelectorAll('[data-aircraft]').forEach(function(e){
+  if (e.innerText.includes("747"))
+    e.appendChild(newDiv7)
+})
+
 document.getElementsByClassName("geofs-list-collapsible-item geofs-notstudent-role")[0].children[0].children[14].appendChild(newDiv8)
 // master livery function
 
 if (geofs.version == 2.9){
   function updateLivery(){
-          if (parseInt(geofs.aircraft.instance.id) == 252 && parseInt(geofs.aircraft.instance.liveryId) == 14){
+          if (parseInt(geofs.aircraft.instance.liveryId) == 14){
 
 Object.values(geofs.api.models._primitives).forEach(function(e){
 if (e._apiLla[0] - geofs.aircraft.instance.llaLocation[0] == 0){
@@ -139,7 +161,7 @@ geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.pr
  == 12){
 geofs.api.Model.prototype.changeTexture("https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/a350_1000_xwb_texture__3_.png", 0, geofs.aircraft.instance.definition.parts[0]["3dmodel"]);
 }
-                if (parseInt(geofs.aircraft.instance.id) == 242 && parseInt(geofs.aircraft.instance.liveryId)
+                if (parseInt(geofs.aircraft.instance.liveryId)
  == 13){
 Object.values(geofs.api.models._primitives).forEach(function(e){
   if (e._apiLla[0] - geofs.aircraft.instance.llaLocation[0] > -0.01 && e._apiLla[0] - geofs.aircraft.instance.llaLocation[0] < 0.01) {
