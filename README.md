@@ -11,7 +11,7 @@ Method 2: create a bookmark with the code in `Bookmark.js` set as the URL. When 
 Note: It is best to select the base aircraft, then when it loads in select the additional liveries. Otherwise the liveries will not work.
 
 **Additions:**<br>
-737: Ryanair, Delta, Air Canada, and Bare Metal<br>
+737: Ryanair, Delta, Air Canada, Bare Metal, New WestJet (Credit: Luca B.), Transavia (Credit: Luca B.), China Eastern and Ethiopian (Credit: Cargolux422)<br>
 A380: House Livery<br>
 A350K: Qatar Livery (Not MP Compatible yet)<br>
 A321Neo: United Livery (Not MP Compatible yet)<br>
