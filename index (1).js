@@ -88,6 +88,12 @@ newDiv8.setAttribute("data-livery", 15);
 
 newDiv8.innerHTML = 'Solid Gray';
 
+//P8A RAAF 
+newDiv10 = document.createElement("div");
+newDiv10.setAttribute("data-aircraft", 3929);
+newDiv10.setAttribute("data-livery", 18);
+
+
 //737 WestJet New
 newDiv9 = document.createElement("div");
 
